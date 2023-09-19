@@ -437,12 +437,12 @@
                     </tr>
                     <tr>
                         <td><label>Horizontal Pixels</label></td>
-                        <td><input id="horiz_pixels" type="text" value="640" /></td>
+                        <td><input id="horiz_pixels" type="text" value="3840" /></td>
                         <td><label id="horiz_valid">Ok</label></td>
                     </tr>
                     <tr>
                         <td><label>Vertical Pixels</label></td>
-                        <td><input id="vert_pixels" type="text" value="480" /></td>
+                        <td><input id="vert_pixels" type="text" value="2160" /></td>
                         <td><label id="vert_valid">Ok</label></td>
                     </tr>
                     <tr>
@@ -904,10 +904,12 @@
                         if (standard == "custom") {
                             hactive         = horiz_pixels;
                             hblank          = Number($('#custom-hblank').val());
+                            H_BLANK         = hblank;
                             htotal          = horiz_pixels + hblank;
 
                             vactive         = vert_pixels;
                             vblank          = Number($('#custom-vblank').val());
+                            V_BLANK         = vblank;
                             vtotal          = vert_pixels + vblank;
 
                             pclock          = htotal * vtotal * refresh_rate;
