@@ -23,6 +23,8 @@
                     { name: "4K / 144"              , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate: 144 },
                     { name: "4K / 120"              , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate: 120 },
                     { name: "4K / 60"               , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate:  60 },
+                    { name: "4K (4:3) / 70"         , horiz_pixels : 2880, vert_pixels : 2160, refresh_rate:  70 },
+                    { name: "4K (4:3) / 60"         , horiz_pixels : 2880, vert_pixels : 2160, refresh_rate:  60 },
                     { name: "3440x1440 / 240"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 240 },
                     { name: "3440x1440 / 200"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 200 },
                     { name: "3440x1440 / 165"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 165 },
@@ -1005,6 +1007,12 @@
     
                             $(prefix + "-pclock").text(Math.round(pclock/1000)/1000);
     
+                            if (pclock > 600000000){
+                                $(prefix + "-pclock").parent().css('background-color', 'lightpink');
+                            } else {
+                                $(prefix + "-pclock").parent().css('background-color', 'lightgreen');
+                            }
+    
                             $(prefix + "-htotal").text(htotal);
                             $(prefix + "-hpixels").text(hactive);
                             $(prefix + "-hblank").text(hblank);
@@ -1047,6 +1055,7 @@
                             $(prefix + "-aspect_ratio").text("");
     
                             $(prefix + "-pclock").text("");
+                            $(prefix + "-pclock").parent().css('background-color', '');
     
                             $(prefix + "-htotal").text("");
                             $(prefix + "-hpixels").text("");
