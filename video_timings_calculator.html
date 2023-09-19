@@ -357,12 +357,12 @@
                         H_FRONT_PORCH           = vic_timing['h_front'];
                         H_SYNC                  = vic_timing['h_sync'];
                         H_BACK_PORCH            = vic_timing['h_back'];
-                        H_POL                   = vic_timing['h_pol'] == 'n' ? "-" : "+";
+                        H_POL                   = vic_timing['h_pol'].toLowerCase() == 'n' ? "-" : "+";
 
                         V_FRONT_PORCH           = vic_timing['v_front'];
                         V_SYNC_RND              = vic_timing['v_sync'];
                         V_BACK_PORCH            = vic_timing['v_back'];
-                        V_POL                   = vic_timing['v_pol'] == 'n' ? "-" : "+";
+                        V_POL                   = vic_timing['v_pol'].toLowerCase() == 'n' ? "-" : "+";
 
                         VIC                     = vic_timing['vic'];
 
@@ -375,7 +375,23 @@
 
             function modeline()
             {
-                str = 'Modeline \"' 
+				str =  H_PIXELS;
+				str += ', ' + H_FRONT_PORCH;
+				str += ', ' + H_SYNC;
+				str += ', ' + H_BLANK;
+				str += ', ' + (H_POL == '+' ? '1' : '0');
+				
+				str += ', ' + V_LINES;
+				str += ', ' + V_FRONT_PORCH;
+				str += ', ' + V_SYNC_RND;
+				str += ', ' + V_BLANK;
+				str += ', ' + (V_POL == '+' ? '1' : '0');
+				
+				str += ', ' + vfreq_round100;
+				
+				str += ', ' + '\"' + H_PIXELS + 'x' + V_LINES + 'p' + vfreq_round100 + '\"'
+			
+                /*str = 'Modeline \"' 
                             + TOTAL_ACTIVE_PIXELS + 'x'
                             + V_LINES_RND + '_'
                             + vfreq_round100;
@@ -399,7 +415,7 @@
                 str += V_POL == "+" ? " +VSync" : " -VSync";
 
                 if (INTERLACED)
-                    str += " Interlace";
+                    str += " Interlace";*/
 
                 return str;
             }
