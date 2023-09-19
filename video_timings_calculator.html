@@ -10,7 +10,7 @@
         <script>
 
             var predefined_modes = [
-                    { name: "8K / 144"              , horiz_pixels : 7680, vert_pixels : 4320, refresh_rate: 144 },
+                    /*{ name: "8K / 144"              , horiz_pixels : 7680, vert_pixels : 4320, refresh_rate: 144 },
                     { name: "8K / 120"              , horiz_pixels : 7680, vert_pixels : 4320, refresh_rate: 120 },
                     { name: "8K / 60"               , horiz_pixels : 7680, vert_pixels : 4320, refresh_rate:  60 },
                     { name: "6K / 60"               , horiz_pixels : 6016, vert_pixels : 3384, refresh_rate:  60 },
@@ -20,35 +20,41 @@
                     { name: "5K / 60"               , horiz_pixels : 5120, vert_pixels : 2880, refresh_rate:  60 },
                     { name: "4K / 240"              , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate: 240 },
                     { name: "4K / 165"              , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate: 165 },
-                    { name: "4K / 144"              , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate: 144 },
+                    { name: "4K / 144"              , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate: 144 },*/
                     { name: "4K / 120"              , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate: 120 },
+                    { name: "4K / 70"               , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate:  70 },
                     { name: "4K / 60"               , horiz_pixels : 3840, vert_pixels : 2160, refresh_rate:  60 },
                     { name: "4K (4:3) / 70"         , horiz_pixels : 2880, vert_pixels : 2160, refresh_rate:  70 },
                     { name: "4K (4:3) / 60"         , horiz_pixels : 2880, vert_pixels : 2160, refresh_rate:  60 },
-                    { name: "3440x1440 / 240"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 240 },
+                    /*{ name: "3440x1440 / 240"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 240 },
                     { name: "3440x1440 / 200"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 200 },
-                    { name: "3440x1440 / 165"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 165 },
+                    { name: "3440x1440 / 165"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 165 },*/
                     { name: "3440x1440 / 120"       , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate: 120 },
                     { name: "3440x1440 / 60"        , horiz_pixels : 3440, vert_pixels : 1440, refresh_rate:  60 },
-                    { name: "1440p / 360"           , horiz_pixels : 2560, vert_pixels : 1440, refresh_rate: 360 },
+                    /*{ name: "1440p / 360"           , horiz_pixels : 2560, vert_pixels : 1440, refresh_rate: 360 },
                     { name: "1440p / 240"           , horiz_pixels : 2560, vert_pixels : 1440, refresh_rate: 240 },
-                    { name: "1440p / 165"           , horiz_pixels : 2560, vert_pixels : 1440, refresh_rate: 165 },
+                    { name: "1440p / 165"           , horiz_pixels : 2560, vert_pixels : 1440, refresh_rate: 165 },*/
+                    { name: "1440p / 140"           , horiz_pixels : 2560, vert_pixels : 1440, refresh_rate: 140 },
                     { name: "1440p / 120"           , horiz_pixels : 2560, vert_pixels : 1440, refresh_rate: 120 },
                     { name: "1440p / 60"            , horiz_pixels : 2560, vert_pixels : 1440, refresh_rate:  60 },
                     { name: "1920x1200 / 60"        , horiz_pixels : 1920, vert_pixels : 1200, refresh_rate:  60 },
-                    { name: "1080p / 500"           , horiz_pixels : 1920, vert_pixels : 1080, refresh_rate: 500 },
-                    { name: "1080p / 360"           , horiz_pixels : 1920, vert_pixels : 1080, refresh_rate: 360 },
+                    /*{ name: "1080p / 500"           , horiz_pixels : 1920, vert_pixels : 1080, refresh_rate: 500 },
+                    { name: "1080p / 360"           , horiz_pixels : 1920, vert_pixels : 1080, refresh_rate: 360 },*/
                     { name: "1080p / 240"           , horiz_pixels : 1920, vert_pixels : 1080, refresh_rate: 240 },
                     { name: "1080p / 144"           , horiz_pixels : 1920, vert_pixels : 1080, refresh_rate: 144 },
                     { name: "1080p / 120"           , horiz_pixels : 1920, vert_pixels : 1080, refresh_rate: 120 },
                     { name: "1080p / 60"            , horiz_pixels : 1920, vert_pixels : 1080, refresh_rate:  60 },
+                    { name: "1920x540 / 60"         , horiz_pixels : 1920, vert_pixels :  540, refresh_rate:  60 },
                     { name: "720p / 60"             , horiz_pixels : 1280, vert_pixels :  720, refresh_rate:  60 },
                     { name: "1024x768 / 60"         , horiz_pixels : 1024, vert_pixels :  768, refresh_rate:  60 },
                     { name: "800x600 / 60"          , horiz_pixels :  800, vert_pixels :  600, refresh_rate:  60 },
+                    { name: "720x480 / 60"          , horiz_pixels :  720, vert_pixels :  480, refresh_rate:  60 },
                     { name: "640x480 / 60"          , horiz_pixels :  640, vert_pixels :  480, refresh_rate:  60 },
                     { name: "640x480 / 50"          , horiz_pixels :  640, vert_pixels :  480, refresh_rate:  50 },
+                    { name: "640x400 / 70"          , horiz_pixels :  640, vert_pixels :  400, refresh_rate:  70 },
+                    { name: "320x240 / 60"          , horiz_pixels :  320, vert_pixels :  240, refresh_rate:  60 },
                     { name: "320x200 / 60"          , horiz_pixels :  320, vert_pixels :  200, refresh_rate:  60 },
-                    { name: "160x100 / 60"          , horiz_pixels :  160, vert_pixels :  100, refresh_rate:  60 },
+                    /*{ name: "160x100 / 60"          , horiz_pixels :  160, vert_pixels :  100, refresh_rate:  60 },*/
                 ];
 
             function check_integer(value, result_id) {
