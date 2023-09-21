@@ -733,9 +733,9 @@
                     <td><label id="cea-peak_bw"></label></td>
                     <td><label id="dmt-peak_bw"></label></td>
                     <td><label id="custom-peak_bw"></label></td>
-                    <td><label>Mbit/s</label></td>
+                    <td><label>Gbps</label></td>
                 </tr>
-                <tr bgcolor=#ffffff>
+                <!--<tr bgcolor=#ffffff>
                     <td><label>Line BW</label></td>
                     <td><label id="cvt-line_bw"></label></td>
                     <td><label id="cvt_rb-line_bw"></label></td>
@@ -754,7 +754,7 @@
                     <td><label id="dmt-active_bw"></label></td>
                     <td><label id="custom-active_bw"></label></td>
                     <td><label>Mbit/s</label></td>
-                </tr>
+                </tr>-->
                 <tr bgcolor=#ffffff>
                     <td><label>DMT ID</label></td>
                     <td/>
@@ -1042,9 +1042,9 @@
                             $(prefix + "-vfreq").text(Math.round(vfreq*1000)/1000);
                             $(prefix + "-vperiod").text(Math.round(vperiod*1000000)/1000);
     
-                            $(prefix + "-peak_bw").text(Math.round(peak_bw/1000000));
-                            $(prefix + "-line_bw").text(Math.round(line_bw/1000000));
-                            $(prefix + "-active_bw").text(Math.round(active_bw/1000000));
+                            $(prefix + "-peak_bw").text((peak_bw/1000000000).toFixed(3));
+                            //$(prefix + "-line_bw").text(Math.round(line_bw/1000000));
+                            //$(prefix + "-active_bw").text(Math.round(active_bw/1000000));
 
                             if (DMT_ID) $(prefix + "-dmt_id").text("0x" + DMT_ID.toString(16) );
                             if (DMT_ID) $(prefix + "-dmt_type").text(DMT_TYPE.toUpperCase() );
@@ -1087,8 +1087,8 @@
                             $(prefix + "-vperiod").text("");
     
                             $(prefix + "-peak_bw").text("");
-                            $(prefix + "-line_bw").text("");
-                            $(prefix + "-active_bw").text("");
+                            //$(prefix + "-line_bw").text("");
+                            //$(prefix + "-active_bw").text("");
 
                             $(prefix + "-dmt_id").text("");
                             $(prefix + "-dmt_type").text("");
