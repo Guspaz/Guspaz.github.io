@@ -726,7 +726,7 @@
                     <td><label>ms</label></td>
                 </tr>
                 <tr bgcolor=#ffffff>
-                    <td><label>Peak BW</label></td>
+                    <td><label>Peak BW (10/8)</label></td>
                     <td><label id="cvt-peak_bw"></label></td>
                     <td><label id="cvt_rb-peak_bw"></label></td>
                     <td><label id="cvt_rb2-peak_bw"></label></td>
@@ -830,7 +830,7 @@
                     <td>Custom</td>
                     <td colspan=7><code><label id="custom-modeline"></label></code></td>
                 </tr>
-                <tr bgcolor=#ffffff><td colspan=8><b>HDMI 2.0</b></td></tr>
+                <tr bgcolor=#ffffff><td colspan=8><b>HDMI 2.0 (bandwidth)</b></td></tr>
                 <tr bgcolor=#ffffff>
                     <td><label>RT4K (600 MHz)</label></td>
                     <td><label id="cvt-hdmi_2_0"></label></td>
@@ -839,7 +839,7 @@
                     <td><label id="cea-hdmi_2_0"></label></td>
                     <td><label id="dmt-hdmi_2_0"></label></td>
                     <td><label id="custom-hdmi_2_0"></label></td>
-                    <td><label>Max 14.4 Gbps</label></td>
+                    <td><label>Max 18 Gbps</label></td>
                 </tr>
             </table>
             </form>
@@ -1042,7 +1042,7 @@
                             $(prefix + "-vfreq").text(Math.round(vfreq*1000)/1000);
                             $(prefix + "-vperiod").text(Math.round(vperiod*1000000)/1000);
     
-                            $(prefix + "-peak_bw").text((peak_bw/1000000000).toFixed(3));
+                            $(prefix + "-peak_bw").text((peak_bw/800000000).toFixed(3));
                             //$(prefix + "-line_bw").text(Math.round(line_bw/1000000));
                             //$(prefix + "-active_bw").text(Math.round(active_bw/1000000));
 
