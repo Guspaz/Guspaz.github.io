@@ -398,32 +398,33 @@
 				str += ', ' + vfreq_round100;
 				
 				str += ', ' + '\"' + H_PIXELS + 'x' + V_LINES + 'p' + vfreq_round100 + '\"'
+
+                return str;
+            }
 			
-                /*str = 'Modeline \"' 
-                            + TOTAL_ACTIVE_PIXELS + 'x'
-                            + V_LINES_RND + '_'
-                            + vfreq_round100;
-                if (INTERLACED)
-                    str += "i";
-                str += '\"';
+			function inputmode()
+            {
+				str = Math.round(vfreq - 5) + '.0';
+				str += ', ' + Math.round(vfreq+ 5) + '.0';
+				str += ', ' + (TOTAL_V_LINES - 2);
+				str += ', ' + (TOTAL_V_LINES + 2);
+				str += ', 0'; //str += ', ' + (H_POL == '+' ? '2' : '1');
+				str += ', 0'; //str += ', ' + (V_POL == '+' ? '2' : '1');
+				str += ', 0'; // Always progressive. // TODO: Support interlaced
+				str += ', ' + (H_SYNC + H_BACK_PORCH);
+				str += ', ' + TOTAL_ACTIVE_PIXELS;
+				str += ', ' + TOTAL_PIXELS;
+				str += ', ' + (V_SYNC_RND + V_BACK_PORCH);
+				str += ', ' + V_LINES;
+				str += ', ' + TOTAL_V_LINES;
+				
+				total_sample = TOTAL_PIXELS;
+				while (total_sample < 1024) {total_sample += TOTAL_PIXELS};
 
-                str += " " + Math.round(pclock/1000)/1000;
-
-                str += " " + TOTAL_ACTIVE_PIXELS;
-                str += " " + (TOTAL_ACTIVE_PIXELS + H_FRONT_PORCH);
-                str += " " + (TOTAL_ACTIVE_PIXELS + H_FRONT_PORCH + H_SYNC);
-                str += " " + TOTAL_PIXELS;
-
-                str += " " + V_LINES_RND;
-                str += " " + (V_LINES_RND + V_FRONT_PORCH);
-                str += " " + (V_LINES_RND + V_FRONT_PORCH + V_SYNC_RND);
-                str += " " + TOTAL_V_LINES;
-
-                str += H_POL == "+" ? " +HSync" : " -HSync";
-                str += V_POL == "+" ? " +VSync" : " -VSync";
-
-                if (INTERLACED)
-                    str += " Interlace";*/
+				str += ', ' + total_sample;
+				str += ', ' + '1.0';
+				str += ', ' + '1';
+				str += ', ' + H_PIXELS + 'x' + V_LINES + 'p' + Math.round(vfreq_round100);
 
                 return str;
             }
@@ -805,6 +806,17 @@
                     <td></td>
                     <td></td>
                 </tr>
+				<tr bgcolor=#ffffff><td colspan=8><b>HDMI 2.0 (bandwidth)</b></td></tr>
+                <tr bgcolor=#ffffff>
+                    <td><label>RT4K (600 MHz)</label></td>
+                    <td><label id="cvt-hdmi_2_0"></label></td>
+                    <td><label id="cvt_rb-hdmi_2_0"></label></td>
+                    <td><label id="cvt_rb2-hdmi_2_0"></label></td>
+                    <td><label id="cea-hdmi_2_0"></label></td>
+                    <td><label id="dmt-hdmi_2_0"></label></td>
+                    <td><label id="custom-hdmi_2_0"></label></td>
+                    <td><label>Max 18 Gbps</label></td>
+                </tr>
                 <tr bgcolor=#ffffff><td colspan=8><b>RT4K Custom Modelines</b></td></tr>
                 <tr bgcolor=#ffffff>
                     <td>CVT</td>
@@ -830,21 +842,36 @@
                     <td>Custom</td>
                     <td colspan=7><code><label id="custom-modeline"></label></code></td>
                 </tr>
-                <tr bgcolor=#ffffff><td colspan=8><b>HDMI 2.0 (bandwidth)</b></td></tr>
+				<tr bgcolor=#ffffff><td colspan=8><b>RT4K Input Modes (square pixels, progressive scan)</b></td></tr>
                 <tr bgcolor=#ffffff>
-                    <td><label>RT4K (600 MHz)</label></td>
-                    <td><label id="cvt-hdmi_2_0"></label></td>
-                    <td><label id="cvt_rb-hdmi_2_0"></label></td>
-                    <td><label id="cvt_rb2-hdmi_2_0"></label></td>
-                    <td><label id="cea-hdmi_2_0"></label></td>
-                    <td><label id="dmt-hdmi_2_0"></label></td>
-                    <td><label id="custom-hdmi_2_0"></label></td>
-                    <td><label>Max 18 Gbps</label></td>
+                    <td>CVT</td>
+                    <td colspan=7><code><label id="cvt-inputmode"></label></code></td>
+                </tr>
+                <tr bgcolor=#ffffff>
+                    <td>CVT-RB</td>
+                    <td colspan=7><code><label id="cvt_rb-inputmode"></label></code></td>
+                </tr>
+                <tr bgcolor=#ffffff>
+                    <td>CVT-RBv2</td>
+                    <td colspan=7><code><label id="cvt_rb2-inputmode"></label></code></td>
+                </tr>
+                <tr bgcolor=#ffffff>
+                    <td>CEA-861</td>
+                    <td colspan=7><code><label id="cea-inputmode"></label></code></td>
+                </tr>
+                <tr bgcolor=#ffffff>
+                    <td>DMT</td>
+                    <td colspan=7><code><label id="dmt-inputmode"></label></code></td>
+                </tr>
+                <tr bgcolor=#ffffff>
+                    <td>Custom</td>
+                    <td colspan=7><code><label id="custom-inputmode"></label></code></td>
                 </tr>
             </table>
             </form>
 
             <ul>
+				<li><b>WARNING: If you use the input modes, it's only a starting point, you will need to tweak it.</b> It always assumes square pixels (PAR of 1.0) and progressive scan, it always specifies mode slot 1. You may also need to tweak the first 7 parameters to tighten the detection window. <a href='https://consolemods.org/wiki/AV:RetroTINK-4K#Custom_Input_Modes'>You should consult the custom input mode documentation before using these.</a>
                 <li>When looking up a DMT or CEA-861 resolution for a particular refresh rate, the tool
                     rounds the specified refresh rate to the closest integer and then matches against rounded 
                     DMT and CEA refresh rates. For example, if you specify a refresh rate of 60.1Hz, the tool will show DMT and CEA refresh
@@ -1058,6 +1085,7 @@
                             });
 
                             $(prefix + "-modeline").html(modeline());
+							$(prefix + "-inputmode").html(inputmode());
                         }
                         else{
                             $(prefix + "-aspect_ratio").text("");
