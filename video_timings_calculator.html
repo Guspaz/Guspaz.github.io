@@ -870,18 +870,10 @@
             </table>
             </form>
 
-            <ul>
-				<li><b>WARNING: If you use the input modes, it's only a starting point, you will need to tweak it.</b> It always assumes square pixels (PAR of 1.0) and progressive scan, it always specifies mode slot 1. You may also need to tweak the first 7 parameters to tighten the detection window. <a href='https://consolemods.org/wiki/AV:RetroTINK-4K#Custom_Input_Modes'>You should consult the custom input mode documentation before using these.</a>
-                <li>When looking up a DMT or CEA-861 resolution for a particular refresh rate, the tool
-                    rounds the specified refresh rate to the closest integer and then matches against rounded 
-                    DMT and CEA refresh rates. For example, if you specify a refresh rate of 60.1Hz, the tool will show DMT and CEA refresh
-                    rates of 59.94Hz.</li>
-                <li>There are some CEA VIC numbers with multiple timings that differ slightly in their Vtotal, and
-                    thus in their refresh rates. For example, VIC timings 23 and 24 have a resolution of 
-                    1440x288 can have a refresh rate of 50.080Hz, 49.920Hz, and 49.761Hz. When you search for one of
-                    those exostic timings, the tool will choose one of the options, but not the other. The exact
-                    behavior is undefined.</li>
-            </ul>
+	    <p><b>WARNING:</b> 600 MHz is the RT4K's HDMI output pixel clock limit, but you may hit other limits (such as internal memory bandwidth) that may prevent you from reaching that high. For example, 1080p inputs with output refresh rates above 120 Hz are known to be problematic.</p>
+            <p><b>WARNING:</b> If you use the input modes, it's only a starting point, you will need to tweak it.</b> It always assumes square pixels (PAR of 1.0) and progressive scan, it always specifies mode slot 1. You may also need to tweak the first 7 parameters to tighten the detection window. <a href='https://consolemods.org/wiki/AV:RetroTINK-4K#Custom_Input_Modes'>You should consult the custom input mode documentation before using these.</a></p>
+            <p>When looking up a DMT or CEA-861 resolution for a particular refresh rate, the tool rounds the specified refresh rate to the closest integer and then matches against rounded  DMT and CEA refresh rates. For example, if you specify a refresh rate of 60.1Hz, the tool will show DMT and CEA refresh rates of 59.94Hz.</p>
+	    <p>There are some CEA VIC numbers with multiple timings that differ slightly in their Vtotal, and thus in their refresh rates. For example, VIC timings 23 and 24 have a resolution of 1440x288 can have a refresh rate of 50.080Hz, 49.920Hz, and 49.761Hz. When you search for one of those exostic timings, the tool will choose one of the options, but not the other. The exact behavior is undefined.</p>
 
             <script type="text/javascript">
 
