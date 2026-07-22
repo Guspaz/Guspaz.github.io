@@ -817,6 +817,16 @@
                     <!-- <td><label id="custom-hdmi_2_0"></label></td> -->
                     <td><label>Max 18 Gbps</label></td>
                 </tr>
+				<tr bgcolor=#ffffff>
+                    <td><label>(300 MHz)</label></td>
+                    <td><label id="cvt-hdmi_2_0_300"></label></td>
+                    <td><label id="cvt_rb-hdmi_2_0_300"></label></td>
+                    <td><label id="cvt_rb2-hdmi_2_0_300"></label></td>
+                    <td><label id="cea-hdmi_2_0_300"></label></td>
+                    <td><label id="dmt-hdmi_2_0_300"></label></td>
+                    <!-- <td><label id="custom-hdmi_2_0"></label></td> -->
+                    <td><label>Max 9 Gbps</label></td>
+                </tr>
                 <tr bgcolor=#ffffff><td colspan=8><b>RT4K Custom Modelines</b></td></tr>
                 <tr bgcolor=#ffffff>
                     <td>CVT</td>
@@ -916,10 +926,12 @@
 
                     var transports = {
                         "hdmi_2_0"          : { name: "RetroTINK 4K (600 MHz)", bw: 600000000*24 },
+						"hdmi_2_0_300"          : { name: "(300 MHz)", bw: 300000000*24 },
                     };
 
                     var transport_list = [
-                        "hdmi_2_0"
+                        "hdmi_2_0",
+						"hdmi_2_0_300"
 					];
 
                     standards.forEach(function(standard, index){
