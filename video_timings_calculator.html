@@ -1047,8 +1047,10 @@
     
                             $(prefix + "-pclock").text(Math.round(pclock/1000)/1000);
     
-                            if (pclock > 600000000){
+                            if (pclock > 600000000) {
                                 $(prefix + "-pclock").parent().css('background-color', 'lightpink');
+                            } else if (pclock > 300000000) {
+                                $(prefix + "-pclock").parent().css('background-color', '#ffcc66');
                             } else {
                                 $(prefix + "-pclock").parent().css('background-color', 'lightgreen');
                             }
